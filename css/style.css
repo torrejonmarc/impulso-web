@@ -176,22 +176,56 @@ justify-content: flex-end; /* Lo pegamos a la derecha de la pantalla */    align
 
 
 /* --- RESPONSIVE PARA MÓVILES --- */
+/* --- ARREGLO PARA MÓVILES (SÚPER IMPORTANTE) --- */
 @media (max-width: 968px) {
+    .hero {
+        padding: 6rem 0 4rem 0; /* Reducimos el espacio superior en móvil */
+    }
+
     .hero-split {
-        flex-direction: column; 
-        text-align: center;
+        flex-direction: column; /* Apilamos los elementos uno encima de otro */
+        align-items: center;    /* Centramos todo horizontalmente */
+        text-align: center;     /* Centramos los textos */
+        gap: 2rem;              /* Menos espacio entre bloques */
     }
+
     .hero-text-left {
-        text-align: center;
+        width: 100%;            /* Que el texto use todo el ancho disponible */
+        order: 1;               /* Primero el texto */
     }
+
+    .hero-text-left h1 {
+        font-size: 2.2rem;      /* Título más pequeño para que no se corte */
+    }
+
     .hero-text-left p {
-        margin: 0 auto 3rem auto; 
+        margin: 0 auto 1.5rem auto; /* Centramos el párrafo */
     }
-    .hero-btns {
-        justify-content: center; 
-    }
+
     .hero-image-right {
-        margin-top: 2rem;
+        width: 100%;
+        order: 2;               /* Segundo el toro */
+        justify-content: center; /* Toro al centro en móvil */
+        margin: 1rem 0;
+    }
+
+    .toro-azul {
+        max-width: 280px;       /* Toro más pequeño para que no ocupe toda la pantalla */
+    }
+
+    .hero-btns {
+        order: 3;               /* Tercero los botones */
+        flex-direction: column; /* Botones uno encima de otro en móviles muy pequeños */
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;            /* Botones anchos para que sea fácil pulsar con el dedo */
+        max-width: 300px;       /* Pero con un límite para que no se vean raros */
+        text-align: center;
     }
 }
 
