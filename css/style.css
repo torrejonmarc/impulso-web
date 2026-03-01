@@ -75,15 +75,34 @@ body {
 
 .btn-cta-nav:hover { transform: scale(1.05); }
 
-/* HERO */
-.hero {
-    padding: 10rem 0 6rem 0;
-    text-align: center;
-    background: radial-gradient(circle at center top, rgba(255, 255, 255, 0.08) 0%, rgba(10, 10, 10, 0) 60%);
+/* --- HERO DIVIDIDO (ESTÉTICA ORIGINAL RESTAURADA) --- */
+.hero { 
+    padding: 10rem 0 6rem 0; 
 }
 
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: -0.02em;}
+.hero-split {
+    display: flex;
+    align-items: flex-start; /* O center, lo que prefieras */
+    justify-content: space-between;
+    gap: 4rem; 
+    flex-wrap: wrap; /* MAGIA: Permite que los botones salten abajo */
+}
 
+/* 1. TEXTO A LA IZQUIERDA */
+.hero-text-left {
+    flex: 1.2; 
+    text-align: left; 
+}
+
+.hero-text-left h1 { 
+    font-size: clamp(2.5rem, 6vw, 4.5rem); 
+    line-height: 1.1; 
+    margin-bottom: 1.5rem; 
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+}
+
+/* Recuperamos TU degradado original */
 .text-gradient {
     background: linear-gradient(90deg, #fff, #666);
     -webkit-background-clip: text;
@@ -91,14 +110,90 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.hero p { color: var(--text-secondary); font-size: clamp(1.1rem, 3vw, 1.4rem); max-width: 700px; margin: 0 auto 3rem auto; }
+.hero-text-left p { 
+    color: var(--text-secondary); 
+    font-size: clamp(1.1rem, 3vw, 1.4rem); 
+    max-width: 600px; 
+    margin: 0 0 0 0; 
+}
 
-.hero-btns { display: flex; gap: 1.5rem; justify-content: center; }
+/* Recuperamos TUS botones originales */
+.hero-btns { 
+    width: 100%; /* Forzamos a que ocupen todo el ancho de la pantalla abajo */
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center; /* Los centra en medio */
+}
 
-.btn-primary { background: var(--accent-blue); color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: var(--transition); }
-.btn-secondary { border: 1px solid #444; color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: var(--transition); }
+.btn-primary { 
+    background: var(--accent-blue); 
+    color: white; 
+    padding: 1rem 2rem; 
+    border-radius: 30px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: var(--transition); 
+    display: inline-block;
+}
 
-.btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+.btn-secondary { 
+    border: 1px solid #444; 
+    color: white; 
+    padding: 1rem 2rem; 
+    border-radius: 30px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: var(--transition); 
+    background: transparent;
+    display: inline-block;
+}
+
+.btn-primary:hover, .btn-secondary:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+}
+
+/* 2. CONTENEDOR DEL TORO A LA DERECHA */
+.hero-image-right {
+    flex: 0.8; 
+    display: flex;
+justify-content: flex-end; /* Lo pegamos a la derecha de la pantalla */    align-items: center;
+    perspective: 1000px; 
+    transform-style: preserve-3d; /* Activa la profundidad 3D real */
+}
+
+/* 3. EL TORO AZUL FLOTANTE (Sin filtros raros) */
+.toro-azul {
+    width: 100%;
+    max-width: 400px; /* LÍMITE ESTRICTO: Nunca pasará de este tamaño */
+    height: auto;
+    object-fit: contain; /* Nos aseguramos de que no se deforme */
+    
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+    transition: filter 0.4s ease, transform 0.4s ease;
+    transform: translateZ(50px); 
+}
+
+
+/* --- RESPONSIVE PARA MÓVILES --- */
+@media (max-width: 968px) {
+    .hero-split {
+        flex-direction: column; 
+        text-align: center;
+    }
+    .hero-text-left {
+        text-align: center;
+    }
+    .hero-text-left p {
+        margin: 0 auto 3rem auto; 
+    }
+    .hero-btns {
+        justify-content: center; 
+    }
+    .hero-image-right {
+        margin-top: 2rem;
+    }
+}
 
 /* SERVICIOS */
 .services { padding: 8rem 0; }
